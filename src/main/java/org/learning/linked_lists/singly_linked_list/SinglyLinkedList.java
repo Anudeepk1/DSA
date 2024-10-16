@@ -1,4 +1,6 @@
-package org.learning.linked_lists;
+package org.learning.linked_lists.singly_linked_list;
+
+import org.learning.linked_lists.List;
 
 import java.util.Scanner;
 
@@ -23,12 +25,12 @@ class Node{
 
 }
 
-class LinkedList {
+class SLL implements List {
     Node head = null;
     Node tail = null;
     int size = 0;
 
-    protected void add(int value){
+    public void add(int value){
         Node newNode;
         newNode = new Node();
         newNode.setNode(value);
@@ -42,7 +44,7 @@ class LinkedList {
         size++;
     }
 
-    protected void addFirst(int value){
+    public void addFirst(int value){
         Node newNode;
         newNode =new Node();
         newNode.value = value;
@@ -53,7 +55,7 @@ class LinkedList {
 
     }
 
-    protected void addAtIndex(int value, int index){
+    public void addAtIndex(int value, int index){
         int current_index = 0;
         int max_index = size-1;
         Node currentNode = head;
@@ -86,7 +88,7 @@ class LinkedList {
         }
     }
 
-    protected  void printList(){
+    public void printList(){
         if(head==null) {
             System.out.println("No elements in the list");
             return;
@@ -209,7 +211,7 @@ public class SinglyLinkedList {
         int val;
         int index;
 
-        LinkedList linkedList = new LinkedList();
+        SLL linkedList = new SLL();
         do {
             System.out.println("Singly Linked List\n" +
                     "1. add\n" +
