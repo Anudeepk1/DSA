@@ -3,7 +3,7 @@ package org.learning.trees;
 
 import java.util.Scanner;
 
-class BT{
+class BST{
     class Node{
         int value;
         Node left;
@@ -48,13 +48,37 @@ class BT{
         }
     }
 
+    public void delete(int value){
+        if(root == null) {
+            System.out.println("No Element to delete");
+            return;
+        } else {
+            delete(root, value);
+        }
+
+    }
+
+    public void delete(Node node, int value){
+        if(node.value > value){
+            delete(node.left, value);
+        } else if(node.value < value){
+            delete(node.right, value);
+        } else if (node.value == value){
+            node = null;
+            return;
+        }
+    }
+
 }
-public class BinaryTree {
+public class BinarySearchTree {
     public static void main(String[] args) {
-        BT binaryTree = new BT();
+        BST binaryTree = new BST();
         binaryTree.insert(10);
         binaryTree.insert(5);
         binaryTree.insert(8);
+        binaryTree.insert(4);
+        binaryTree.delete(8);
+        binaryTree.delete(8);
 
 
     }
