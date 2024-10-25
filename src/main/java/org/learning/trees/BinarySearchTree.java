@@ -69,16 +69,33 @@ class BST{
         }
     }
 
+    public void postOrderTraversal(){
+       postOrder(root);
+    }
+
+    public void postOrder(Node node){
+        //left => right => root
+        if(node.left != null){
+            postOrder(node.left);
+        }
+        if(node.right != null){
+            postOrder(node.right);
+        }
+        System.out.print(node.value);
+        if(node != root) System.out.print(" -> ");
+    }
+
 }
 public class BinarySearchTree {
     public static void main(String[] args) {
         BST binaryTree = new BST();
         binaryTree.insert(10);
-        binaryTree.insert(5);
         binaryTree.insert(8);
         binaryTree.insert(4);
-        binaryTree.delete(8);
-        binaryTree.delete(8);
+        binaryTree.insert(7);
+        binaryTree.insert(5);
+        binaryTree.insert(12);
+        binaryTree.postOrderTraversal();
 
 
     }
