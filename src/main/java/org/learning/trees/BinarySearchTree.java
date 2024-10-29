@@ -71,12 +71,12 @@ class BST {
         }
     }
 
-    public void getGreatest() {
-        int val = greatestNode(root);
-        System.out.println(val);
+    public int getGreatest() {
+        int val = getGreatestNode(root);
+        return val;
     }
 
-    public int greatestNode(Node node) {
+    public int getGreatestNode(Node node) {
         Node currentNode = node;
         while (currentNode.right != null) {
             currentNode = currentNode.right;
@@ -86,23 +86,45 @@ class BST {
 
 
     public void preOrderTraversal() {
+        int val = getGreatestNode(root);
         //root , left , right
-        preOrder(root);
+        preOrder(root, val);
     }
 
-    public void preOrder(Node node) {
+    public void preOrder(Node node, int val) {
         System.out.print(node.value);
-        if (node.value != greatestNode(root)) System.out.print(" -> ");
+        if (node.value != val) System.out.print(" -> ");
 
         if (node.left != null) {
-            preOrder(node.left);
+            preOrder(node.left, val);
 
         }
         if (node.right != null) {
-            preOrder(node.right);
+            preOrder(node.right, val);
         }
 
     }
+
+
+    public void inOrderTraversal(){
+        int val = getGreatestNode(root);
+        //Left → Root → Right.
+        inOrder(root, val);
+    }
+
+    public void inOrder(Node node, int val){
+
+        if(node.left != null){
+            inOrder(node.left, val);
+        }
+        System.out.print(node.value);
+        if(node.value != val) System.out.print(" -> ");
+        if(node.right != null){
+            inOrder(node.right, val);
+        }
+
+    }
+
 
     public void postOrderTraversal() {
         //left , right , root
@@ -137,12 +159,16 @@ public class BinarySearchTree {
         binaryTree.insert(8);
         binaryTree.insert(12);
         System.out.println("Get Greatest Node");
-        binaryTree.getGreatest();
+        int val = binaryTree.getGreatest();
+        System.out.println(val);
         System.out.println("postOrder");
         binaryTree.postOrderTraversal();
 
         System.out.println("preOrder");
         binaryTree.preOrderTraversal();
+        System.out.println();
+        System.out.println("Inorder");
+        binaryTree.inOrderTraversal();
 
 
     }
