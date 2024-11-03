@@ -1,35 +1,14 @@
 package org.learning.linked_lists.singly_linked_list;
 
-import org.learning.linked_lists.List;
-
+import org.learning.linked_lists.AbstractList;
 import java.util.Scanner;
 
-class Node{
-    Integer value;
-    Node next;
-
-    Node(){}
-
-    Node(int value){
-        this.value = value;
-    }
-
-    Node(int value, Node next) {
-        this.value = value;
-        this.next = next;
-    }
-
-    public void setNode(Integer value){
-        this.value = value;
-    }
-
-}
-
-class SLL implements List {
+class SLL extends AbstractList {
     Node head = null;
     Node tail = null;
     int size = 0;
 
+    @Override
     public void add(int value){
         Node newNode;
         newNode = new Node();
@@ -43,7 +22,7 @@ class SLL implements List {
         }
         size++;
     }
-
+    @Override
     public void addFirst(int value){
         Node newNode;
         newNode =new Node();
@@ -54,7 +33,7 @@ class SLL implements List {
 
 
     }
-
+    @Override
     public void addAtIndex(int value, int index){
         int current_index = 0;
         int max_index = size-1;
@@ -87,7 +66,7 @@ class SLL implements List {
             currentNode = currentNode.next;
         }
     }
-
+    @Override
     public void printList(){
         if(head==null) {
             System.out.println("No elements in the list");
@@ -105,11 +84,11 @@ class SLL implements List {
         }
         System.out.println();
     }
-
+    @Override
     public void size() {
         System.out.println("Size of the list: "+size);
     }
-
+    @Override
     public void remove() {
         Node currectNode = head;
 
@@ -133,7 +112,7 @@ class SLL implements List {
 
         }
     }
-
+    @Override
     public boolean isEmpty() {
         if(head == null){
             return true;
@@ -141,7 +120,7 @@ class SLL implements List {
             return false;
         }
     }
-
+    @Override
     public void removeFirst() {
         if(head == null){
             System.out.println("List is empty");
@@ -153,7 +132,7 @@ class SLL implements List {
 
         }
     }
-
+    @Override
     public void clear() {
         if(head == null){
             System.out.println("List is already empty");
@@ -170,7 +149,7 @@ class SLL implements List {
         size = 0;
 
     }
-
+    @Override
     public void removeAtIndex(int index) {
         if(isEmpty()){
             System.out.println("List is empty");
@@ -213,7 +192,8 @@ public class SinglyLinkedList {
 
         SLL linkedList = new SLL();
         do {
-            System.out.println("Singly Linked List\n" +
+            System.out.println(
+                    "Singly Linked List\n" +
                     "1. add\n" +
                     "2. PrintList\n" +
                     "3. addFirst\n" +

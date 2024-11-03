@@ -1,7 +1,8 @@
 package org.learning.trees;
 
 
-import java.util.Scanner;
+import java.util.*;
+import java.util.concurrent.LinkedBlockingDeque;
 
 class BST {
     class Node {
@@ -84,6 +85,16 @@ class BST {
         return currentNode.value;
     }
 
+    public void height(){
+        int val = getHeight(root);
+        System.out.println(val);
+    }
+
+    public int getHeight(Node node){
+        if(node == null) return 0;
+        return Math.max(getHeight(node.left), getHeight(node.right)) +1 ;
+    }
+
 
     public void preOrderTraversal() {
         int val = getGreatestNode(root);
@@ -125,7 +136,6 @@ class BST {
 
     }
 
-
     public void postOrderTraversal() {
         //left , right , root
         postOrder(root);
@@ -145,6 +155,32 @@ class BST {
         System.out.print(node.value);
         if (node != root) System.out.print(" -> ");
     }
+
+    public void search(){}
+
+    public void isBalanced(){}
+
+    public void findMin(){}
+
+    public void levelOrderTraversal(){
+        //breath first search
+        Queue<Node> queue = new LinkedList<>();
+
+        queue.add(root);
+        while(!queue.isEmpty()){
+            Node currentNode = queue.poll();
+            System.out.print(currentNode.value);
+
+            if(currentNode.left != null) queue.add(currentNode.left);
+            if (currentNode.right != null) queue.add(currentNode.right);
+
+            if(!queue.isEmpty()) System.out.print(" => ");
+        }
+        System.out.println();
+    }
+
+
+
 
 }
 
@@ -169,6 +205,11 @@ public class BinarySearchTree {
         System.out.println();
         System.out.println("Inorder");
         binaryTree.inOrderTraversal();
+        System.out.println();
+        System.out.println("Level Order");
+        binaryTree.levelOrderTraversal();
+        System.out.println("Height");
+        binaryTree.height();
 
 
     }

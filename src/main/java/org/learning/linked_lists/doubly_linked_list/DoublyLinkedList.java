@@ -1,7 +1,7 @@
 package org.learning.linked_lists.doubly_linked_list;
 
 
-import org.learning.linked_lists.List;
+import org.learning.linked_lists.AbstractList;
 
 import java.util.Scanner;
 class Node{
@@ -10,11 +10,9 @@ class Node{
     Node next;
 }
 
-class DLL implements List {
-
+class DLL extends AbstractList {
     @Override
     public void size() {
-
     }
 
     @Override
@@ -31,12 +29,10 @@ class DLL implements List {
     public void addAtIndex(int val, int index) {
 
     }
-
     @Override
     public void printList() {
 
     }
-
     @Override
     public boolean isEmpty() {
         return false;
@@ -56,7 +52,6 @@ class DLL implements List {
     public void removeFirst() {
 
     }
-
     @Override
     public void clear() {
 
