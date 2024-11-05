@@ -4,16 +4,6 @@ import org.learning.collection.list.linked_list.LinkedList;
 
 public class SinglyLinkedList<E> extends LinkedList<E> {
 
-    @Override
-    public void get(int index) {
-
-    }
-
-    @Override
-    public void set(E data, int index) {
-
-    }
-
     public void add(E data){
         Node<E> newNode;
         newNode = new Node<>(data);

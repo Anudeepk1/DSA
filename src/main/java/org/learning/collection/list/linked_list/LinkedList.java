@@ -1,7 +1,6 @@
 package org.learning.collection.list.linked_list;
 
 import org.learning.collection.list.List;
-import org.learning.linked_lists.singly_linked_list.Node;
 
 public abstract class LinkedList<E> implements List<E> {
 
@@ -21,6 +20,37 @@ public abstract class LinkedList<E> implements List<E> {
         }
 
     }
+
+    public void get(int index){
+        if(head==null) {
+            System.out.println("No elements in the list");
+            return;
+        } else if(index < 0 || index >= size){
+            System.out.println("Index Out of bound Exception");
+        } else {
+            Node<E> node = head;
+            for(int i=0; i<=index; i++){
+                node = node.next;
+            }
+            System.out.println(node.data);
+        }
+    }
+
+    public void set(E data, int index){
+        if(head==null) {
+            System.out.println("No elements in the list");
+            return;
+        } else if(index < 0 || index >= size){
+            System.out.println("Index Out of bound Exception");
+        } else {
+            Node<E> node = head;
+            for(int i=0; i<=index; i++){
+                node = node.next;
+            }
+            node.data = data;
+        }
+    }
+
 
     public void print(){
         if(head==null) {
