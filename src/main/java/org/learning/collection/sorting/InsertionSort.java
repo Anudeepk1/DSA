@@ -12,7 +12,23 @@ public class InsertionSort {
     // Stable sorting algorithm; suitable for small datasets or nearly sorted data.
 
     public static int[] sort(int[] arr){
+        int temp;
+        int pointer;
 
+        if(arr == null || arr.length <2){
+            return arr;
+        }
+
+        for(int i=1; i<arr.length; i++){
+            pointer = arr[i];
+            for(int j=i-1; j>=0; j--){
+                if(arr[j+1] < arr[j]){
+                    arr[j+1] = arr[j];
+                    arr[j] = pointer;
+
+                }
+            }
+        }
         return arr;
     }
 
