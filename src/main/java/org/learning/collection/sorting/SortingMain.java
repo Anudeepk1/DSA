@@ -4,10 +4,11 @@ import java.util.Arrays;
 
 public class SortingMain {
     public static void main(String[] args){
-        int[] arr = {2,5,8,1};
-                //{25, 7, 19, 3, 12, 8, 45, 31, 10, 18};
+        int[] arr = //{2,5,8,1};
+                {25, 7, 19, 3, 12, 8, 45, 31, 10, 18};
 //        System.out.println(Arrays.toString(BubbleSort.sort(arr)));
-        System.out.println(Arrays.toString(InsertionSort.sort(arr)));
+//        System.out.println(Arrays.toString(InsertionSort.sort(arr)));
+        System.out.println(Arrays.toString(SelectionSort.sort(arr)));
 
     }
 }
