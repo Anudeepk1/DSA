@@ -9,6 +9,7 @@ class BST {
         int value;
         Node left;
         Node right;
+        int height;
 
         Node() {
         }
@@ -26,7 +27,7 @@ class BST {
     public void insert(int value) {
         if (root == null) {
             Node newNode = new Node(value);
-            root = newNode;
+
         } else {
             insert(root, value);
         }
@@ -49,6 +50,8 @@ class BST {
             }
             insert(node.right, value);
         }
+
+
     }
 
     public void delete(int value) {
