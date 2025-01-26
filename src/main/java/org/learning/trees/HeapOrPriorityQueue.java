@@ -1,12 +1,18 @@
 package org.learning.trees;
 
+import java.util.Arrays;
+
 public class HeapOrPriorityQueue {
     static int pointer = 1;
     public static void main(String[] args) {
         int[] heapQueue = new int[50];
 
         //formula ==> left = 2*i, right = 2*i+1, parent = i/2;
-        push(heapQueue, 14);
+//        push(heapQueue, 14);
+        int[] heap = {0, 4, 10, 3, 5, 1};
+        pointer = 5;
+        heapify(heap);
+        System.out.println(Arrays.toString(heap));
 
     }
 
@@ -20,15 +26,40 @@ public class HeapOrPriorityQueue {
         }
     }
 
+    public static void heapify(int[] arr){
+        int toIndex = pointer/2;
+        for(int i=toIndex; i>0; i--){
+            adjustMinHeap(arr, i);
+        }
+    }
+
     public static void pop(int[] arr, int maxIndex){
         arr[1] = arr[maxIndex];
         arr[maxIndex] = 0;
         maxIndex = 1;
         pointer--;
 
+        adjustMinHeap(arr, maxIndex);
+
+        /*while((arr[maxIndex*2] < arr[maxIndex]) || (arr[maxIndex*2+1] < arr[maxIndex])){
+            if((arr[maxIndex*2] < arr[maxIndex*2+1]) && (arr[maxIndex*2] < arr[maxIndex])){
+                int temp = arr[maxIndex];
+                arr[maxIndex] = arr[maxIndex*2];
+                arr[maxIndex*2] = temp;
+                maxIndex = maxIndex*2;
+            } else if((arr[maxIndex*2] > arr[maxIndex*2+1]) && (arr[maxIndex*2+1] < arr[maxIndex])){
+                int temp = arr[maxIndex];
+                arr[maxIndex] = arr[maxIndex*2+1];
+                arr[maxIndex*2+1] = temp;
+                maxIndex = maxIndex*2+1;
+            }
+        }*/
+    }
+
+    private static void adjustMinHeap(int[] arr, int maxIndex) {
         while(true){
-            int leftChild = maxIndex*2;
-            int rightChild = maxIndex*2+1;
+            int leftChild = maxIndex *2;
+            int rightChild = maxIndex *2+1;
             int smallest = maxIndex;
 
             if(leftChild <= pointer && arr[leftChild] < arr[smallest]){
@@ -46,20 +77,6 @@ public class HeapOrPriorityQueue {
             arr[smallest] = temp;
             maxIndex = smallest;
         }
-
-        /*while((arr[maxIndex*2] < arr[maxIndex]) || (arr[maxIndex*2+1] < arr[maxIndex])){
-            if((arr[maxIndex*2] < arr[maxIndex*2+1]) && (arr[maxIndex*2] < arr[maxIndex])){
-                int temp = arr[maxIndex];
-                arr[maxIndex] = arr[maxIndex*2];
-                arr[maxIndex*2] = temp;
-                maxIndex = maxIndex*2;
-            } else if((arr[maxIndex*2] > arr[maxIndex*2+1]) && (arr[maxIndex*2+1] < arr[maxIndex])){
-                int temp = arr[maxIndex];
-                arr[maxIndex] = arr[maxIndex*2+1];
-                arr[maxIndex*2+1] = temp;
-                maxIndex = maxIndex*2+1;
-            }
-        }*/
     }
 
     private static void percolateUp(int[] arr, int index) {
