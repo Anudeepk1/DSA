@@ -1,0 +1,4 @@
+tree must have 2 properties
+
+1. Structured property- where tree must have perfect binary tree exception last level
+2. order property- where parent node must have lesser or equal value than right and left  sub tree and its sub trees and
