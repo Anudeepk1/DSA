@@ -7,10 +7,12 @@ public class AdjListGraph {
     public static void main(String[] args) {
         int[][] matrix = { {0, 2}, {1, 0}, {2, 0} };
         int[][] matrixWithWeight = { {0, 2, 10}, {1, 0, 20}, {2, 0, 30} };
-        boolean isDirectional = false;
+        boolean isDirectional = true;
         GraphUsingList gul = new GraphUsingList(matrix.length);
-//        gul.addNodesToAdjList(matrix, isDirectional);
+        gul.addNodesToAdjList(matrix, isDirectional);
+        gul.findDegreeForDirectedGraph();
         gul.addNodesToAdjListWithWeights(matrixWithWeight, isDirectional);
+        gul.findDegreeForUnDirectedGraph();
     }
 }
 
@@ -103,6 +105,39 @@ class GraphUsingList{
             System.out.println();
         }
     }
+
+    void findDegreeForDirectedGraph(){
+        int[] inDegree = new int[arrList.size()];
+        int[] outDegree = new int[arrList.size()];
+        for(int i=0; i< arrList.size(); i++){
+            List<Integer> arr = arrList.get(i);
+            outDegree[i]++;
+            for(Integer num: arr){
+                inDegree[num]++;
+            }
+        }
+
+        for(int i=0; i< arrList.size(); i++){
+            System.out.println(i +" -> In-degree: " + inDegree[i] +", Out-degree: "+ outDegree[i]);
+
+        }
+    }
+
+    void findDegreeForUnDirectedGraph(){
+        int[] degree = new int[arrList.size()];
+        for(int i=0 ; i < arrList.size() ; i++){
+            degree[i]++;
+            for(Integer num: arrList.get(i)){
+                degree[num]++;
+            }
+        }
+
+        for(int i=0; i< arrList.size(); i++){
+            System.out.println(i +" -> degree: " + degree[i] );
+
+        }
+    }
+
 
 
 }
