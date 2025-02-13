@@ -1,4 +1,4 @@
-package org.learning.graphs;
+package org.learning.graphs.adj_list;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,13 @@ public class AdjListGraph {
         gul.findDegreeForDirectedGraph();
         gul.addNodesToAdjListWithWeights(matrixWithWeight, isDirectional);
         gul.findDegreeForUnDirectedGraph();
+        //
+        int[][] traverseMatrix = {{0, 1}, {1, 2},{2, 3},{2, 4},{4, 5},{4, 6},{5, 7},{6, 7}};
+        GraphUsingList dfsGraph = new GraphUsingList(traverseMatrix.length);
+        List<List<Integer>> lists = dfsGraph.addNodesToAdjList(traverseMatrix, false);
+        DFS graphDfs = new DFS(lists);
+        graphDfs.traverseDFSUsingList();
+
     }
 }
 
@@ -67,7 +74,7 @@ class GraphUsingList{
     }
 
 
-    void addNodesToAdjList(int[][] matrix, boolean isDirectional){
+    List<List<Integer>> addNodesToAdjList(int[][] matrix, boolean isDirectional){
         for(int[] arr: matrix){
             int v = arr[0];
             int u = arr[1];
@@ -80,6 +87,7 @@ class GraphUsingList{
             }
         }
         printAdjList(arrList);
+        return arrList;
     }
 
     private void printAdjList(List<List<Integer>> arrList) {

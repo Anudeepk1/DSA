@@ -1,4 +1,4 @@
-package org.learning.graphs;
+package org.learning.graphs.adj_matrix;
 
 public class AdjMatrixGraph {
     public static void main(String[] args) {
@@ -12,6 +12,14 @@ public class AdjMatrixGraph {
         gh.findDegreeForDirectedGraph(matrix1);
         System.out.println();
         gh.findDegreeForUndirectedGraph(matrix1);
+
+        int[][] traverseMatrix = {{0, 1}, {1, 2},{2, 3},{2, 4},{4, 5},{4, 6},{5, 7},{6, 7}};
+        Graph matGraph = new Graph(traverseMatrix.length);
+        System.out.println();
+        int[][] adjMat = matGraph.addNodesToAdjMatrix(traverseMatrix, false);
+        DFSMatrix dfs = new DFSMatrix(adjMat);
+        dfs.traverseDFSUsingMatrix();
+
     }
 }
 
@@ -38,7 +46,7 @@ class Graph{
     }
 
 
-    void addNodesToAdjMatrix(int[][] edges, boolean isDirectional){
+    public int[][] addNodesToAdjMatrix(int[][] edges, boolean isDirectional){
         for(int[] edge: edges){
             int v = edge[0];
             int u = edge[1];
@@ -55,6 +63,7 @@ class Graph{
 //                matrix[edges[i][0]][edges[i][1]] = 1;
 //        }
         printMatrix(matrix);
+        return matrix;
     }
 
     void printMatrix(int[][] edges){
