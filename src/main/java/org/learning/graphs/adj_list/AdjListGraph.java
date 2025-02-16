@@ -20,6 +20,15 @@ public class AdjListGraph {
         DFS graphDfs = new DFS(lists);
         graphDfs.traverseDFSUsingList();
 
+        int[][] bfsMatrix = {{0,3}, {1,5}, {2, 2}, {7, 7}, {3, 5}, {4,6}, {5,6}, {6,4}};
+        GraphUsingList bfsGraph = new GraphUsingList(bfsMatrix.length);
+        List<List<Integer>> lists1 = bfsGraph.addNodesToAdjList(bfsMatrix, false);
+        lists1.get(2).clear();
+        lists1.get(7).clear();
+        BFS graphBfs = new BFS(lists1);
+        graphBfs.traverseBFS();
+
+
     }
 }
 
@@ -76,6 +85,7 @@ class GraphUsingList{
 
     List<List<Integer>> addNodesToAdjList(int[][] matrix, boolean isDirectional){
         for(int[] arr: matrix){
+
             int v = arr[0];
             int u = arr[1];
 
